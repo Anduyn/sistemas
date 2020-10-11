@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Pasteleria Pepe</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body{
+            background:url("pasteleria.jpg");
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-attachment:fixed;
+            font-family:Arial, helvetica, sans-serif;
+            font-size:18px;
+        }
+        body,html {
+            margin: 1;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        .col{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: brown;
+            font-size: 25px;
+            color: white;
+            float: left;
+        }
+        .col-auto{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: white;
+            font-size: 25px;
+            float: right;
+        }
+        #text {
+            background-color: rgba(150, 219, 236, 0.993);
+            padding-top: 0%;
+            padding-bottom: 100px;
+            margin: auto;
+            max-width: 800px;
+            width: 90%;
+        }
+        #textotarea {
+            width: 790px;
+            height: 50px;
+            font-size: 20px;
+            margin-top: 100px;
+            /*border-top:10px solid #b6ff00;*/
+        }
+        #but{
+            width:200px;
+            height:50px;
+            background-color:white;
+        }
+        .tareas .lista{
+            list-style:none;
+        }
+        .tareas .lista li {
+            border-bottom:1px solid #B6B6B6;
+        }
+        .tareas .lista li a {
+            color: #212121;
+            display:block;
+            padding:20px 0;
+            text-decoration:none;
+        }
+        .tareas li a:hover {
+            text-decoration:line-through;
+       }
+       .list{
+            background-color:white;
+            margin:auto;
+            max-width:800px;
+            width:90%;
+        }
+        .col{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: brown;
+            font-size: 25px;
+            color: white;
+            float: left;
+        }
+        .col-auto{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: white;
+            font-size: 25px;
+            float: right;
+        }
+        #logo{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col"><img id="logo" src="imagenes/pepe.jpg"/>PASTELERIA PEPE</div>
+            <div class="col-auto"><a id="home" href='home.html'>HOME</a></div>
+            <div class="col-auto"><a id="libroo" href='libro/libropastel.html'>PASTELES</a></div>
+            <div class="col-auto"><a id="tareas" href='menutareas.html'>AGREGUE SUS PASTELES</a> </div>
+            <div class="col-auto"><a id="joomla" href='home.html'>WORDPRESS</a> </div>
+        </div>
+    </div>    
+    <div id="text" align="center">
+        <input id="textotarea" class="error" type="text" placeholder="Agregar Pasteles" />
+        <p><input type="button" class="but" id="but" value="Agregar Pasteles"/></p>
+    </div>
+    <div class="lista">
+        <div class="list">
+            <ul class="tareas" id="lista">
+                <li><a href="#">Pastel de chocolate</a></li>
+                <li><a href="#">Pastel de fresa</a></li>
+                <li><a href="#">Pastel de frambuesa</a></li> 
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var lista = document.getElementById("lista"),
+            tareas = document.getElementById("textotarea"),
+            buton = document.getElementById("but");
+        var agregartarea = function () {
+            var tarea = tareas.value,
+                nuevatarea = document.createElement("li"),
+                enlace = document.createElement("a");
+            contenido = document.createTextNode(tarea);
+            if (tarea == "") {
+                tareas.setAttribute("placeholder", "Agrega un Pastel");
+                tareas.className = "error";
+                return false;
+            }
+            enlace.appendChild(contenido);
+            enlace.setAttribute("href", "#");
+            nuevatarea.appendChild(enlace);
+            lista.appendChild(nuevatarea);
+            tareas.value = "";
+            for (var i = 0; i <= lista.children.length - 1; i++) {
+                lista.children[i].addEventListener("click", function () {
+                    this.parentNode.removeChild(this);
+                });
+            }
+        }
+        var comprobartext = function () {
+            tareas.className = "";
+            tareas.setAttribute("placeholder", "Agregar Pastel");
+        }
+        var eliminartarea = function () {
+            this.parentNode.removeChild(this);
+        }
+        buton.addEventListener("click", agregartarea);
+        tareas.addEventListener("click", comprobartext);
+        for (var i = 0; i <= lista.children.length-1; i++) {
+            lista.children[i].addEventListener("click", eliminartarea);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+
+</html>
